@@ -1,4 +1,8 @@
-# OPENCV Practice Code
+# Authors: Wang & Johnson Inc. ™
+# Usage Notes:
+#      Uses OPENCV to capture movement from human motion and animate after-effects using 
+#      captured motion
+#      https://www.youtube.com/watch?v=nRt2LPRz704&list=WL&index=22&t=0s
 
 # Imports necessary packages
 import numpy as np
