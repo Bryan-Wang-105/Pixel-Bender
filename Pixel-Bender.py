@@ -1,6 +1,6 @@
 # Authors: Wang & Johnson Inc. ™
 # Usage Notes:
-#      Uses OPENCV to capture movement from human motion and animate after-effects using 
+#      Uses OPENCV to capture movement from human motion and animate after-effects using
 #      captured motion
 #      https://www.youtube.com/watch?v=nRt2LPRz704&list=WL&index=22&t=0s
 
@@ -28,16 +28,30 @@ while time.time() < t_end:
 
     fgmask = fgbg.apply(frame)
 
-    diff = cv2.absdiff(first_frame,frame)
+    diff = cv2.absdiff(first_frame, frame)
 
     # displays feeds
     #cv2.imshow("Standard", frame)
+    cv2.namedWindow("Standard", cv2.WND_PROP_FULLSCREEN)
+    cv2.setWindowProperty(
+        "Standard", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    cv2.imshow("Standard", frame)
+
+    cv2.namedWindow("Differences", cv2.WND_PROP_FULLSCREEN)
+    cv2.setWindowProperty(
+        "Differences", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     cv2.imshow("Differences", diff)
+
+    cv2.namedWindow("Bkgrnd-Rmvl", cv2.WND_PROP_FULLSCREEN)
+    cv2.setWindowProperty(
+        "Bkgrnd-Rmvl", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
     cv2.imshow("Bkgrnd-Rmvl", fgmask)
 
     first_frame = frame
 
-    key = cv2.waitKey(30)  #if key == 27:#    break
+    key = cv2.waitKey(30)
+    if key == 27:
+        break
 
 capture.release()
 cv2.destroyAllWindows()
